@@ -10,7 +10,6 @@ tags:
 - face shape classifier
 datasets:
 - bkprocovid19/face_shape
-library_name: keras
 ---
 # Face Shape Classification Model (EfficientNetB4 + CNN)
 
