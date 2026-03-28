@@ -3,6 +3,7 @@ import requests
 import torch
 import torchvision.transforms as T
 from PIL import Image
+import argparse
 import torch.nn.functional as F  # For softmax
 
 # Define device
@@ -24,8 +25,15 @@ def download_model_if_not_exists(url, model_path):
         print("Model already exists locally.")
 
 def load_model(model_path):
-    """Load model from the given path."""
-    model = torch.load(model_path, map_location=torch.device('cpu'))
+    """
+    Load model from the given path.
+
+    Official PyTorch guidance (serialization semantics, torch>=2.6):
+    if a checkpoint contains a serialized nn.Module instead of only a
+    state_dict, load it with weights_only=False, and only for trusted
+    checkpoints.
+    """
+    model = torch.load(model_path, map_location=device, weights_only=False)
     model.eval()  # Set model to evaluation mode
     model.to(device)
     return model
@@ -37,7 +45,7 @@ def preprocess_image(image_path):
         T.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])  # Normalize
     ])
     image = Image.open(image_path).convert("RGB")  # Open and convert image to RGB
-    return transform(image).unsqueeze(0)  # Add batch dimension
+    return transform(image).unsqueeze(0)  # pyright: ignore[reportAttributeAccessIssue] # Add batch dimension
 
 def get_probabilities(logits):
     """Apply softmax to get probabilities."""
@@ -78,5 +86,8 @@ def main(image_path):
 
 # Call the function with the path to the image
 if __name__ == "__main__":
-    image_path = "path_to_your_image.jpg"  # Update this with your image path
+    parser = argparse.ArgumentParser(description="Face shape classification inference")
+    parser.add_argument("image_path", help="Path to the image file")
+    args = parser.parse_args()
+    image_path = args.image_path
     main(image_path)
