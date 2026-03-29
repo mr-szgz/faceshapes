@@ -1,5 +1,15 @@
 [tools]
+powershell = "7"
 python = "3.12"
 
 [env]
 UV_LINK_MODE = "copy"
+
+[tasks.clean]
+run = "pwsh -NoProfile -File scripts/Invoke-Clean-Faceshapes-Build.ps1"
+
+[tasks.build]
+run = "pwsh -NoProfile -File scripts/Invoke-Build-Faceshapes-Wheels.ps1"
+
+[tasks.bump]
+run = "pwsh -NoProfile -File scripts/Invoke-Bump-Faceshapes-Version.ps1 -BumpVersion auto"

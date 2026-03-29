@@ -57,9 +57,51 @@ The model provides high accuracy in classifying face shapes and performs well ev
 
 You can use this model for inference using the Hugging Face `transformers` library.
 
+For the local project layout in this repository, you can also run the packaged CLI directly:
+
+```bash
+python -m faceshapes path/to/image-or-folder
+```
+
+This always writes per-image text output into a `faceshapes/` directory next to the input file, or inside the input directory when you pass a folder.
+
+### CLI Options
+
+```bash
+python -m faceshapes path/to/image-or-folder -Move
+python -m faceshapes path/to/image-or-folder -Force
+python -m faceshapes path/to/image-or-folder -Move -Directory faces
+```
+
+- `-Move` / `--move`: Move each image into a folder named after that image's top predicted face shape under `faces/` by default, then rename each face shape folder to include its file count (for example `faces/Oval_12/`).
+- `-Directory` / `--directory`: Parent folder name used by `-Move` before the face shape folder (default: `faces`).
+- `-Force` / `--force`: Re-run inference and overwrite existing `faceshapes/*.txt` files.
+- By default, inference is skipped when an existing `faceshapes/*_faceshapes.txt` is present and valid. With `-Move`, those existing results are reused and inference only runs when a result file is missing/invalid (or when `-Force` is set).
+
 ### Installation
 
 Make sure you have the following dependencies installed:
 
 ```bash
 pip install transformers torch torchvision
+```
+
+## Build and Release Automation
+
+This repository now includes reusable packaging/CI/release scaffolding for the `faceshapes` CLI:
+
+```bash
+mise run clean
+mise run build
+mise run bump
+```
+
+Equivalent direct PowerShell commands:
+
+```powershell
+pwsh -NoProfile -File scripts/Invoke-Clean-Faceshapes-Build.ps1
+pwsh -NoProfile -File scripts/Invoke-Build-Faceshapes-Wheels.ps1
+pwsh -NoProfile -File scripts/Invoke-Bump-Faceshapes-Version.ps1 -BumpVersion auto
+```
+
+CI runs packaging checks on pushes/PRs, and release publishing is triggered by semantic tags (`vX.Y.Z`) via `.github/workflows/release.yml`.

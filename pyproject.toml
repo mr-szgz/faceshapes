@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "faceshapes"
+version = "0.1.0"
+description = "CLI for face shape inference from images."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "Pillow>=10",
+    "requests>=2.31",
+    "torch",
+    "torchvision",
+    "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+dev = [
+    "build",
+    "twine",
+    "cibuildwheel",
+    "pyinstaller>=6",
+]
+
+[project.scripts]
+faceshapes = "faceshapes:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["faceshapes*"]
+
+[tool.setuptools]
+include-package-data = true

@@ -65,3 +65,7 @@ Thumbs.db
 # Project specific
 *.log
 .env
+examples/faceshapes/**/*
+examples/Faces/**/*
+examples/labels/**/*
+examples/noface/**/*
