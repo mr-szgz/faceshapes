@@ -1,0 +1,38 @@
+Windows Registry Editor Version 5.00
+
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\Faceless]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\FacelessMove]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\Faceshapes]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\FaceshapesMove]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\FaceshapesAnalyze]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\FaceshapesAnalyzeMove]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\Faceless]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\FacelessMove]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\Faceshapes]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\FaceshapesMove]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\FaceshapesAnalyzeCurrent]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\FaceshapesAnalyzeMoveCurrent]
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Faceshapes]
+@="FaceShapes"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Faceshapes\command]
+@="\"C:\Users\shoji\AppData\Local\mise\installs\python\3.10.16\Scripts\faceshapes.exe\" \"%1\""
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\FaceshapesMove]
+@="FaceShapes Move"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\FaceshapesMove\command]
+@="\"C:\Users\shoji\AppData\Local\mise\installs\python\3.10.16\Scripts\faceshapes.exe\" \"%1\" --move"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\Faceshapes]
+@="FaceShapes"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\Faceshapes\command]
+@="\"C:\Users\shoji\AppData\Local\mise\installs\python\3.10.16\Scripts\faceshapes.exe\" \"%V\""
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\FaceshapesMove]
+@="FaceShapes Move"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\FaceshapesMove\command]
+@="\"C:\Users\shoji\AppData\Local\mise\installs\python\3.10.16\Scripts\faceshapes.exe\" \"%V\" --move"

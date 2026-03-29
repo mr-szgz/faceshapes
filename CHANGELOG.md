@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-03-29
+### Changed
+- Simplified File Explorer registry integration to keep only required `FaceShapes` and `FaceShapes Move` commands.
+
 ## [0.1.1] - 2026-03-28
 ### Changed
 - Patch release: bumped package version metadata to `0.1.1`.
