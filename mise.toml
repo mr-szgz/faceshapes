@@ -1,10 +1,13 @@
 [tools]
 powershell = "7"
-python = "3.12"
+python = "3.10"
+uv = "latest"
 
 [env]
 UV_LINK_MODE = "copy"
 
+[tasks.venv]
+run = "pwsh -NoProfile \"uv venv --python 3.10 --seed\""
 [tasks.clean]
 run = "pwsh -NoProfile -File scripts/Invoke-Clean-Faceshapes-Build.ps1"
 

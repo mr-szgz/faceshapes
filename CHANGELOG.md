@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-03-28
+### Changed
+- Patch release: bumped package version metadata to `0.1.1`.
+
 ## [0.1.0] - 2026-03-28
 ### Added
 - Added `pyproject.toml` with standardized packaging metadata and a console script entry point (`faceshapes`).
